@@ -41,7 +41,7 @@ These are all regexes that match exactly the strings below:
 ## Literals
 ### Strings
 
-- `\".*\"`
+- `\"[^"]*\"`
 
 TODO: escape sequences?
 
