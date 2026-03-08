@@ -14,6 +14,7 @@ These are all regexes that match exactly the strings below:
 - `<`
 - `>=`
 - `<=`
+- `!`
 
 ## Special Characters
 These are all regexes that match exactly the strings below:
@@ -21,8 +22,8 @@ These are all regexes that match exactly the strings below:
 - `;`
 - `\(`
 - `\)`
-- `{`
-- `}`
+- `\{`
+- `\}`
 
 ## Keywords
 These are all regexes that match exactly the strings below:
@@ -37,13 +38,14 @@ These are all regexes that match exactly the strings below:
 - `else`
 - `while`
 
-## Strings
+## Literals
+### Strings
 
 - `\".*\"`
 
 TODO: escape sequences?
 
-## Numbers
+### Numbers
 
 - `[0-9]+(\.[0-9]+)?`
 
