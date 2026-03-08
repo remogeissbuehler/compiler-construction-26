@@ -115,7 +115,9 @@ public class Scanner {
 	}
 
 	private void handleString(char c) {
-		while (peek().orElse('\n') != '"')
+		char n;
+
+		while ((n = peek().orElse('\n')) != '"' && n != '\n')
 			advance();
 
 		if (!match('"'))
