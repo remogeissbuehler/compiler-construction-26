@@ -60,31 +60,6 @@ public class Scanner {
 		tokens.add(tok);
 	}
 
-	/*
-	 * private TokenType resolveSingleCharacterTokenType(char c) {
-	 * switch (c) {
-	 * case '+':
-	 * return TokenType.OP_PLUS;
-	 * case '-':
-	 * return TokenType.OP_MINUS;
-	 * case '*':
-	 * return TokenType.OP_STAR;
-	 * case ';':
-	 * return TokenType.CHAR_SEMICOLON;
-	 * case '(':
-	 * return TokenType.CHAR_L_PAREN;
-	 * case ')':
-	 * return TokenType.CHAR_R_PAREN;
-	 * case '{':
-	 * return TokenType.CHAR_L_BRACE;
-	 * case '}':
-	 * return TokenType.CHAR_R_BRACE;
-	 * 
-	 * default:
-	 * throw new RuntimeException("invalid single character token: " + c);
-	 * }
-	 * }
-	 */
 	private void handleNumber(char c) {
 		boolean hasDecimal = false;
 		boolean hasAfterDecimal = false;
