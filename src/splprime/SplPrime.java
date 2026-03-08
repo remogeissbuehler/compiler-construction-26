@@ -15,6 +15,10 @@ public class SplPrime {
 
 	// Expects a single file that comprises SPL' program as argument
 	public static void main(String[] args) throws IOException {
+		if (args.length != 1) {
+			System.err.println("expected exactly one file to parse");
+			System.exit(1);
+		}
 		runFile(args[0]);
 	}
 
