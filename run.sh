@@ -3,7 +3,8 @@
 source build.sh
 
 run() {
-    java -cp "$BIN_DIR" splprime.SplPrime "$@"
+  java -cp "$BIN_DIR" splprime.SplPrime "$@"
+  ./build/splprime "$@"
 }
 
 run "$@"
