@@ -96,7 +96,7 @@ class TokenResolver {
 			case "==":
 				return TokenType.OP_EQUAL;
 			case "!=":
-				return TokenType.OP_EQUAL;
+				return TokenType.OP_NOT_EQUAL;
 			case ">":
 				return TokenType.OP_GREATER_THAN;
 			case ">=":
