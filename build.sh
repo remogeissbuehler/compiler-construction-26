@@ -6,12 +6,21 @@ BIN_DIR="bin/"
 
 build() {
   echo "building spl"
-  find src -name '*.java' | xargs javac -d "$BIN_DIR"
+  if command -v javac >/dev/null; then
+    find src -name '*.java' | xargs javac -d "$BIN_DIR"
+  else
+    echo "no javac, skipping"
+  fi
 
-  go generate ./...
+  if command -v go >/dev/null; then
+    go install golang.org/x/tools/cmd/stringer@latest
+    go generate ./...
 
-  mkdir -p build
-  go build -o build/splprime cmd/splprime/main.go
+    mkdir -p build
+    go build -o build/splprime cmd/splprime/main.go
+  else
+    echo "no go, skipping"
+  fi
 }
 
 build
