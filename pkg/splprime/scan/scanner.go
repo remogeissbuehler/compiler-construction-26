@@ -2,6 +2,7 @@ package scan
 
 import (
 	"errors"
+	"strconv"
 	"unicode"
 
 	"github.com/remogeissbuehler/compiler-construction/pkg/option"
@@ -67,11 +68,11 @@ func (s *Scanner) currentLexeme() string {
 }
 
 func (s *Scanner) addToken(typ TokenType) {
-	s.addTokenWithLexeme(typ, s.currentLexeme())
+	s.addTokenWithLiteral(typ, nil)
 }
 
-func (s *Scanner) addTokenWithLexeme(typ TokenType, lexeme string) {
-	tok := NewToken(typ, lexeme, s.currentLexeme(), s.line)
+func (s *Scanner) addTokenWithLiteral(typ TokenType, literal any) {
+	tok := NewToken(typ, s.currentLexeme(), literal, s.line)
 	s.tokens = append(s.tokens, tok)
 }
 
@@ -104,7 +105,12 @@ func (s *Scanner) handleNumber() error {
 		}
 	}
 
-	s.addToken(LitNumber)
+	val, err := strconv.ParseFloat(s.currentLexeme(), 64)
+	if err != nil {
+		return errors.New("number error: cannot parse float from number")
+	}
+
+	s.addTokenWithLiteral(LitNumber, val)
 	return nil
 }
 
@@ -137,7 +143,7 @@ func (s *Scanner) handleString() error {
 	text := s.currentLexeme()
 	text = text[1 : len(text)-1]
 
-	s.addTokenWithLexeme(LitString, text)
+	s.addTokenWithLiteral(LitString, text)
 	return nil
 }
 

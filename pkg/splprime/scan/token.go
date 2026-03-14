@@ -14,5 +14,6 @@ func NewToken(typ TokenType, lexeme string, literal any, line int) Token {
 }
 
 func (t Token) String() string {
-	return fmt.Sprintf("<%s,%s,%s,%d>", t.typ, t.lexeme, t.literal, t.line)
+	// return "<" + type + "," + lexeme + "> " + "Literal: " + literal + ", Line: " + line;
+	return fmt.Sprintf("< %s, %s > Literal: %v, Line: %d", t.typ, t.lexeme, t.literal, t.line)
 }

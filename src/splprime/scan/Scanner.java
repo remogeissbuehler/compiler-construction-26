@@ -51,12 +51,11 @@ public class Scanner {
 	}
 
 	private void addToken(TokenType type) {
-		Token tok = new Token(type, currentLexeme(), type, line);
-		tokens.add(tok);
+    addToken(type, null);
 	}
 
-	private void addToken(TokenType type, String lexeme) {
-		Token tok = new Token(type, lexeme, type, line);
+	private void addToken(TokenType type, Object literal) {
+		Token tok = new Token(type, currentLexeme(), literal, line);
 		tokens.add(tok);
 	}
 
@@ -92,7 +91,7 @@ public class Scanner {
 			}
 		}
 
-		addToken(TokenType.LIT_NUMBER);
+		addToken(TokenType.LIT_NUMBER, Double.parseDouble(currentLexeme()));
 	}
 
 	private static boolean isAlphaNumeric(Optional<Character> c) {
