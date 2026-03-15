@@ -17,7 +17,7 @@ build() {
     go generate ./...
 
     mkdir -p build
-    go build -o build/splprime cmd/splprime/main.go
+    go build -o gobin/splprime cmd/splprime/main.go
   else
     echo "no go, skipping"
   fi
