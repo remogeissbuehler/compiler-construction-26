@@ -10,7 +10,7 @@ import (
 
 func isAlphaNumeric(r option.Option[rune]) bool {
 	return r.IsSomeAnd(func(x rune) bool {
-		return unicode.IsLetter(x) || unicode.IsNumber(x)
+		return unicode.IsLetter(x) || unicode.IsDigit(x)
 	})
 }
 
@@ -77,31 +77,13 @@ func (s *Scanner) addTokenWithLiteral(typ TokenType, literal any) {
 }
 
 func (s *Scanner) handleNumber() error {
-	hasDecimal := false
-	hasAfterDecimal := false
-	done := false
+	for s.peek().IsSomeAnd(unicode.IsDigit) {
+		s.advance()
+	}
 
-	for !done {
-		next := s.peek().OrElse('\n')
-		switch next {
-		case '0', '1', '2', '3', '4', '5', '6', '7', '8', '9':
+	if s.match('.') {
+		for s.peek().IsSomeAnd(unicode.IsDigit) {
 			s.advance()
-			hasAfterDecimal = hasDecimal
-
-		case '.':
-			if hasDecimal {
-				return errors.New("number error: expected at most one decimal point.")
-			}
-
-			hasDecimal = true
-			s.advance()
-
-		default:
-			done = true
-			if hasDecimal && !hasAfterDecimal {
-				return errors.New("number error: expected numbers after decimal point.")
-			}
-
 		}
 	}
 
