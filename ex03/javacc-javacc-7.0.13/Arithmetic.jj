@@ -1,0 +1,44 @@
+options
+{
+    LOOKAHEAD=2;
+}
+PARSER_BEGIN(Arithmetic)
+public class Arithmetic
+{
+}
+PARSER_END(Arithmetic)
+SKIP :
+{
+    " "
+|   "r"
+|   "t"
+}
+TOKEN:
+{
+    < NUMBER: (<DIGIT>)+ ( "." (<DIGIT>)+ )? >
+|   < DIGIT: ["0"-"9"] >
+}
+double expr():
+{
+}
+{
+    term() ( "+" expr() | "-" expr() )*
+}
+double term():
+{
+}
+{
+    unary() ( "*" term() | "/" term() )*
+}
+double unary():
+{
+}
+{
+    "-" element() | element()
+}
+double element():
+{
+}
+{
+    <NUMBER> | "(" expr() ")"
+}

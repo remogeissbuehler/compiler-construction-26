@@ -1,0 +1,77 @@
+options
+{
+    LOOKAHEAD=2;
+}
+PARSER_BEGIN(SplPrimeAutoParser)
+package splprime.autoscan;
+
+public class SplPrimeAutoParser
+{
+}
+PARSER_END(SplPrimeAutoParser)
+
+SKIP :
+{
+  "//" : WithinComment
+}
+
+<WithinComment> SKIP :
+{
+  "\n" : DEFAULT
+}
+
+<WithinComment> MORE :
+{
+  <~[]>
+}
+
+SKIP :
+{
+    " " 
+  | "\r" 
+  | "\t"
+  | "\n"
+}
+
+TOKEN:
+{
+    < KEYWORD_TRUE: "true" >
+  | < KEYWORD_FALSE: "false" >
+  | < KEYWORD_AND: "and" >
+  | < KEYWORD_OR: "or" >
+  | < KEYWORD_VAR: "var" >
+  | < KEYWORD_PRINT: "print" >
+  | < KEYWORD_IF: "if" >
+  | < KEYWORD_ELSE: "else" >
+  | < KEYWORD_WHILE: "while" >
+}
+
+TOKEN:
+{
+    < IDEN: (["a" - "z"]|["A" - "Z"])(["a" - "z"]|["A" - "Z"]|["0" - "9"])* >
+  | < LIT_NUM: (["0" - "9"])+("." (["0" - "9"])+)? >
+  | < LIT_STR: "\"" (~["\n","\r", "\""])* "\"" >
+  
+}
+
+TOKEN:
+{
+  < OP_PLUS: "+" >
+| < OP_MINUS: "-" >
+| < OP_STAR: "*" >
+| < OP_SLASH: "/" >
+| < OP_ASSIGN: "=" >
+| < OP_EQUAL: "==" >
+| < OP_NOT_EQUAL: "!=" >
+| < OP_GREATER_THAN: ">" >
+| < OP_LESS_THAN: "<" >
+| < OP_GEQ: ">=" >
+| < OP_LEQ: "<=" >
+| < OP_BANG: "!" >
+
+| < CHAR_SEMICOLON: ";" >
+| < CHAR_LPAREN: "(" >
+| < CHAR_RPAREN: ")" >
+| < CHAR_LBRACE: "{" >
+| < CHAR_RBRACE: "}" >
+}
