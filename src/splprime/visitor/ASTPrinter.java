@@ -124,6 +124,8 @@ public class ASTPrinter implements ASTVisitor {
             variableDeclaration.initializer.orElseThrow().accept(this);
         } catch (NoSuchElementException _) {
         }
+
+        nbIndents--
     }
 
 }
