@@ -6,10 +6,17 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ManualTests",
+            "request": "launch",
+            "mainClass": "splprime.ast.tests.ManualTests",
+            "projectName": "compiler-construction_2f635e9d"
+        },
+        {
+            "type": "java",
             "name": "Parser w/ sample",
             "request": "launch",
             "mainClass": "splprime.SplPrime",
-            "args": "${workspaceFolder}/inputs/sample.spl",
+            "args": "${workspaceFolder}/inputs/sample.spl"
         }
     ]
 }
