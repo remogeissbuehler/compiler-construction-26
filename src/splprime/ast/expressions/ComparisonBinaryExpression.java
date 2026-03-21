@@ -5,8 +5,9 @@ import splprime.scan.Token;
 import splprime.scan.TokenType;
 import splprime.visitor.ExpressionVisitor;
 
-public class ComparisonExpression extends AbstractBinaryExpression {
-    public ComparisonExpression(Expression left, Token operator, Expression right) throws UnexpectedTokenException {
+public class ComparisonBinaryExpression extends AbstractBinaryExpression {
+    public ComparisonBinaryExpression(Expression left, Token operator, Expression right)
+            throws UnexpectedTokenException {
         super(left, operator, right);
     }
 
@@ -24,7 +25,7 @@ public class ComparisonExpression extends AbstractBinaryExpression {
     }
 
     @Override
-    void accept(ExpressionVisitor v) {
+    public void accept(ExpressionVisitor v) {
         v.visit(this);
     }
 }

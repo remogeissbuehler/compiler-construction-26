@@ -1,6 +1,6 @@
 package splprime.ast.statements;
 
-import java.beans.Expression;
+import splprime.ast.expressions.Expression;
 import java.util.Optional;
 
 import splprime.visitor.StatementVisitor;

@@ -11,7 +11,7 @@ public class LiteralExpression extends Expression {
     }
 
     @Override
-    void accept(ExpressionVisitor v) {
+    public void accept(ExpressionVisitor v) {
         v.visit(this);
     }
 
