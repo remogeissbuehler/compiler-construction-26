@@ -46,3 +46,11 @@ func (opt Option[T]) IsSomeAnd(predicate func(T) bool) bool {
 
 	return predicate(opt.val)
 }
+
+func (opt Option[T]) IfSomeThen(action func(T)) {
+	if !opt.exists {
+		return
+	}
+
+	action(opt.val)
+}
