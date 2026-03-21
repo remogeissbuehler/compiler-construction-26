@@ -1,3 +1,11 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "java.project.resourceFilters": [
+        "node_modules",
+        "\\.git",
+        "ex03"
+    ],
+    "java.project.sourcePaths": [
+        "src"
+    ]
 }
