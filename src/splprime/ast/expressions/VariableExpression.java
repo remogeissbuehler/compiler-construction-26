@@ -3,12 +3,10 @@ package splprime.ast.expressions;
 import splprime.scan.Token;
 import splprime.visitor.ExpressionVisitor;
 
-public class AssignmentExpression extends Expression {
-    public Token identifier;
-    public Expression value;
+public class VariableExpression extends Expression {
+    public Token value;
 
-    public AssignmentExpression(Token identifier, Expression value) {
-        this.identifier = identifier;
+    public VariableExpression(Token value) {
         this.value = value;
     }
 

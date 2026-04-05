@@ -16,4 +16,8 @@ public class Token {
 	public String toString() {
 		return "<" + type + "," + lexeme + "> " + "Literal: " + literal + ", Line: " + line;
 	}
+
+	public boolean isEOF() {
+		return this.type == TokenType.EOF;
+	}
 }

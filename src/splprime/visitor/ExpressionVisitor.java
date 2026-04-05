@@ -9,6 +9,8 @@ public interface ExpressionVisitor {
 
     public void visit(LiteralExpression e);
 
+    public void visit(VariableExpression e);
+
     public void visit(ArithmeticBinaryExpression arithmeticExpression);
 
     public void visit(LogicalBinaryExpression logicalBinaryExpression);

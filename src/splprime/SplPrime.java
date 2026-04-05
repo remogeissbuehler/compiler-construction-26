@@ -6,8 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import splprime.parse.Parser;
+import splprime.parse.SyntaxError;
 import splprime.scan.Scanner;
 import splprime.scan.Token;
+import splprime.visitor.ASTPrinter;
 
 public class SplPrime {
 
@@ -37,9 +40,27 @@ public class SplPrime {
 		List<Token> tokens = scanner.scanTokens();
 
 		// For now, just print the tokens
+		System.out.println("========= TOKENs =========");
 		for (Token token : tokens) {
 			System.out.println(token);
 		}
+
+		Parser parser = new Parser(tokens);
+		try {
+			var stmts = parser.parse();
+
+			System.out.println("========= STATEMENTs =========");
+			for (var stmt : stmts) {
+				System.out.println("-------------");
+				var printer = new ASTPrinter();
+				stmt.accept(printer);
+				System.out.println(printer.finish());
+			}
+		} catch (SyntaxError e) {
+			System.err.println("AAAH");
+			System.err.println(e);
+		}
+
 	}
 
 	public static void error(int line, String message) {

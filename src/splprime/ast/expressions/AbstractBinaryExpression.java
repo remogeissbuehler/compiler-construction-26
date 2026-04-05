@@ -11,11 +11,11 @@ public abstract class AbstractBinaryExpression extends Expression {
 
     protected abstract boolean checkTokenType(TokenType tt);
 
-    public AbstractBinaryExpression(Expression left, Token operator, Expression right) throws UnexpectedTokenException {
-        boolean valid = checkTokenType(operator.type);
-        if (!valid) {
-            throw new UnexpectedTokenException(operator);
-        }
+    public AbstractBinaryExpression(Expression left, Token operator, Expression right) {
+        // boolean valid = checkTokenType(operator.type);
+        // if (!valid) {
+        // throw new UnexpectedTokenException(operator);
+        // }
 
         this.left = left;
         this.operator = operator;

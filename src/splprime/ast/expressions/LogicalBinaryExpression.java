@@ -7,7 +7,7 @@ import splprime.visitor.ExpressionVisitor;
 
 public class LogicalBinaryExpression extends AbstractBinaryExpression {
 
-    public LogicalBinaryExpression(Expression left, Token operator, Expression right) throws UnexpectedTokenException {
+    public LogicalBinaryExpression(Expression left, Token operator, Expression right) {
         super(left, operator, right);
     }
 

@@ -7,8 +7,7 @@ import splprime.visitor.ExpressionVisitor;
 
 public class ArithmeticBinaryExpression extends AbstractBinaryExpression {
 
-    public ArithmeticBinaryExpression(Expression left, Token operator, Expression right)
-            throws UnexpectedTokenException {
+    public ArithmeticBinaryExpression(Expression left, Token operator, Expression right) {
         super(left, operator, right);
     }
 

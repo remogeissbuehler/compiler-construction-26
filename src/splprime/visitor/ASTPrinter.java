@@ -55,6 +55,11 @@ public class ASTPrinter implements ASTVisitor {
     }
 
     @Override
+    public void visit(VariableExpression e) {
+        indentAppend("VariableExpr: " + e.value.toString());
+    }
+
+    @Override
     public void visit(ArithmeticBinaryExpression arithmeticExpression) {
         visitBinary(arithmeticExpression, "ArithmeticBinaryExpression");
 
@@ -118,14 +123,14 @@ public class ASTPrinter implements ASTVisitor {
     public void visit(VariableDeclaration variableDeclaration) {
         indentAppend("VariableDeclaration");
         nbIndents++;
-        indentAppend("Name: " + variableDeclaration.name);
+        indentAppend("Name: " + variableDeclaration.name());
 
         try {
             variableDeclaration.initializer.orElseThrow().accept(this);
         } catch (NoSuchElementException _) {
         }
 
-        nbIndents--
+        nbIndents--;
     }
 
 }
